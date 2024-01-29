@@ -22,6 +22,26 @@ import java.util.Map;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     /**
+     *
+     * Requires extends ResponseEntityExceptionHandler
+     * get all validation errors failed in the input data ~ validationErrorList
+     * from each list ~ iterate 1 by 1 ~ the fieldName and the validationMsg ~ populate into the hashMap
+     *  @Email(message = "Email address should be a valid value")
+     *  !! Send the validationErrors as part of the ResponseEntity !!
+     *
+     *  sample result from PostMan
+     *  {
+     *     "mobileNumber": "Mobile number must be 10 digits",
+     *     "name": "The length of the customer name should be between 5 and 30",
+     *     "email": "Email address should be a valid value"
+     * }
+     *
+     * Triggered from @Validated
+     * public class AccountsController {........
+     *
+     * To communicate with Spring Boot to perform the validations define in dto
+     * public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto){
+     *
      * Exception thrown when validation annotated @Valid or Validation related annotations fails
      * Validation defined from the dto like @NotEmpty, @Email, @Pattern...
      *
