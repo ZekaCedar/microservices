@@ -71,7 +71,7 @@
 				<version>${project.parent.version}</version>
 				<configuration>
 					<image>
-						<name>eazybytes/${project.artifactId}:s4</name>
+						<name>sizukha/${project.artifactId}:s4</name>
 					</image>
 					<excludes>
 						<exclude>
